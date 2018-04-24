@@ -1,6 +1,6 @@
 repository:
   name: messengerbot
-  description: Telegram Bot for GLPI
+  description: Messenger Bot for GLPI
   homepage: https://pluginsGLPI.github.io/messengerbot/
   topics: messenger, bot, plugin, glpi
   private: false
