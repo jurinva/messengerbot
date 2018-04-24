@@ -1,28 +1,28 @@
 <?php
 /*
  -------------------------------------------------------------------------
- TelegramBot plugin for GLPI
- Copyright (C) 2017 by the TelegramBot Development Team.
+ MessengerBot plugin for GLPI
+ Copyright (C) 2017 by the MessengerBot Development Team.
 
- https://github.com/pluginsGLPI/telegrambot
+ https://github.com/jurinva/messengerbot
  -------------------------------------------------------------------------
 
  LICENSE
 
- This file is part of TelegramBot.
+ This file is part of MessengerBot.
 
- TelegramBot is free software; you can redistribute it and/or modify
+ MessengerBot is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
 
- TelegramBot is distributed in the hope that it will be useful,
+ MessengerBot is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with TelegramBot. If not, see <http://www.gnu.org/licenses/>.
+ along with MessengerBot. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
 
@@ -33,14 +33,14 @@ if (!defined('GLPI_ROOT')) {
 /**
 *  This class manages the sms notifications settings
 */
-class PluginTelegrambotNotificationWebsocketSetting extends NotificationSetting {
+class PluginMessengerbotNotificationWebsocketSetting extends NotificationSetting {
 
    static function getTypeName($nb=0) {
-      return __('Telegram followups configuration', 'telegrambot');
+      return __('Messenger followups configuration', 'messengerbot');
    }
 
    public function getEnableLabel() {
-      return __('Enable followups via Telegram', 'telegrambot');
+      return __('Enable followups via Messenger', 'messengerbot');
    }
 
    static public function getMode() {
@@ -50,13 +50,13 @@ class PluginTelegrambotNotificationWebsocketSetting extends NotificationSetting 
    function showFormConfig($options = []) {
       global $CFG_GLPI;
 
-      $bot_token = PluginTelegrambotBot::getConfig('token');
-      $bot_username = PluginTelegrambotBot::getConfig('bot_username');
+      $bot_token = PluginMessengerbotBot::getConfig('token');
+      $bot_username = PluginMessengerbotBot::getConfig('bot_username');
 
       $out = "<form action='" . Toolbox::getItemTypeFormURL(__CLASS__) . "' method='post'>";
       $out .= "<div>";
       $out .= "<table class='tab_cadre_fixe'>";
-      $out .= "<tr class='tab_bg_1'>" . "<th colspan='4'>" . _n('Telegram notification', 'Telegram notifications', Session::getPluralNumber()) . "</th></tr>";
+      $out .= "<tr class='tab_bg_1'>" . "<th colspan='4'>" . _n('Messenger notification', 'Messenger notifications', Session::getPluralNumber()) . "</th></tr>";
 
       $out .= "<tr class='tab_bg_2'>";
       $out .= "<td> " . __('Bot token') . "</td><td>";

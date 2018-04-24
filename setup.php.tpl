@@ -1,32 +1,32 @@
 <?php
 /*
  -------------------------------------------------------------------------
- TelegramBot plugin for GLPI
- Copyright (C) {YEAR} by the TelegramBot Development Team.
+ MessengerBot plugin for GLPI
+ Copyright (C) {YEAR} by the MessengerBot Development Team.
 
- https://github.com/pluginsGLPI/telegrambot
+ https://github.com/jurinva/messengerbot
  -------------------------------------------------------------------------
 
  LICENSE
 
- This file is part of TelegramBot.
+ This file is part of MessengerBot.
 
- TelegramBot is free software; you can redistribute it and/or modify
+ MessengerBot is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
 
- TelegramBot is distributed in the hope that it will be useful,
+ MessengerBot is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with TelegramBot. If not, see <http://www.gnu.org/licenses/>.
+ along with MessengerBot. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_TELEGRAMBOT_VERSION', '2.0.0');
+define('PLUGIN_MESSENGERBOT_VERSION', '2.0.0');
 
 /**
  * Init hooks of the plugin.
@@ -34,10 +34,10 @@ define('PLUGIN_TELEGRAMBOT_VERSION', '2.0.0');
  *
  * @return void
  */
-function plugin_init_telegrambot() {
+function plugin_init_messengerbot() {
    global $PLUGIN_HOOKS;
 
-   $PLUGIN_HOOKS['csrf_compliant']['telegrambot'] = true;
+   $PLUGIN_HOOKS['csrf_compliant']['messengerbot'] = true;
 }
 
 
@@ -47,10 +47,10 @@ function plugin_init_telegrambot() {
  *
  * @return array
  */
-function plugin_version_telegrambot() {
+function plugin_version_messengerbot() {
    return [
-      'name'           => 'TelegramBot',
-      'version'        => PLUGIN_TELEGRAMBOT_VERSION,
+      'name'           => 'MessengerBot',
+      'version'        => PLUGIN_MESSENGERBOT_VERSION,
       'author'         => '<a href="http://www.teclib.com">Teclib\'</a>',
       'license'        => '',
       'homepage'       => '',
@@ -64,7 +64,7 @@ function plugin_version_telegrambot() {
  *
  * @return boolean
  */
-function plugin_telegrambot_check_prerequisites() {
+function plugin_messengerbot_check_prerequisites() {
    // Strict version check (could be less strict, or could allow various version)
    if (version_compare(GLPI_VERSION, '9.1', 'lt')) {
       if (method_exists('Plugin', 'messageIncompatible')) {
@@ -84,13 +84,13 @@ function plugin_telegrambot_check_prerequisites() {
  *
  * @return boolean
  */
-function plugin_telegrambot_check_config($verbose = false) {
+function plugin_messengerbot_check_config($verbose = false) {
    if (true) { // Your configuration check
       return true;
    }
 
    if ($verbose) {
-      _e('Installed / not configured', 'telegrambot');
+      _e('Installed / not configured', 'messengerbot');
    }
    return false;
 }

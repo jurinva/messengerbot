@@ -1,0 +1,59 @@
+<root>
+   <name>MessengerBot</name>
+   <key>messengerbot</key>
+   <!-- stable, beta, development, alpha, ... -->
+   <state>stable</state>
+   <logo>https://raw.githubusercontent.com/jurinva/messengerbot/master/messengerbot.png</logo>
+   <description>
+      <short>
+         <!-- Add as many lang tag you want -->
+         <en>MessengerBot GLPI plugin.</en>
+      </short>
+      <long>
+         <!-- Add as many lang tag you want -->
+         <en>
+            Messenger bot for GLPI.
+
+            Video Preview
+            --------
+            https://youtu.be/TKqIpIaAIAE
+         </en>
+      </long>
+   </description>
+   <homepage>https://github.com/jurinva/messengerbot</homepage>
+   <download>https://github.com/jurinva/messengerbot/releases</download>
+   <issues>https://github.com/jurinva/messengerbot/issues</issues>
+   <readme>https://github.com/jurinva/messengerbot/blob/master/README.md</readme>
+   <authors>
+      <!-- Add as many author tag you want -->
+      <author>Truly Systems</author>
+   </authors>
+   <versions>
+      <!-- Add as many version tag you want -->
+      <version>
+         <num>2.0.0</num>
+         <!-- Add as many compatibility tag you want -->
+         <compatibility>9.2</compatibility>
+      </version>
+   </versions>
+   <langs>
+      <!-- Add as many lang tag you want -->
+      <lang>en_GB</lang>
+   </langs>
+   <license>GPL V3+</license>
+   <tags>
+      <en>
+         <tag>Messenger</tag>
+         <tag>Bot</tag>
+         <tag>Notification</tag>
+         <tag>Message</tag>
+      </en>
+   </tags>
+   <screenshots>
+      <screenshot>https://raw.githubusercontent.com/jurinva/messengerbot/master/screenshots/screenshot1.png</screenshot>
+      <screenshot>https://raw.githubusercontent.com/jurinva/messengerbot/master/screenshots/screenshot2.png</screenshot>
+      <screenshot>https://raw.githubusercontent.com/jurinva/messengerbot/master/screenshots/screenshot3.png</screenshot>
+      <screenshot>https://raw.githubusercontent.com/jurinva/messengerbot/master/screenshots/screenshot4.png</screenshot>
+      <screenshot>https://raw.githubusercontent.com/jurinva/messengerbot/master/screenshots/screenshot5.png</screenshot>
+   </screenshots>
+</root>

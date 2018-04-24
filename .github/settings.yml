@@ -1,8 +1,8 @@
 repository:
-  name: telegrambot
+  name: messengerbot
   description: Telegram Bot for GLPI
-  homepage: https://pluginsGLPI.github.io/telegrambot/
-  topics: telegram, bot, plugin, glpi
+  homepage: https://pluginsGLPI.github.io/messengerbot/
+  topics: messenger, bot, plugin, glpi
   private: false
   has_issues: true
   has_wiki: false

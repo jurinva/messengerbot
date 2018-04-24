@@ -1,47 +1,47 @@
 <?php
 /*
  -------------------------------------------------------------------------
- TelegramBot plugin for GLPI
- Copyright (C) 2017 by the TelegramBot Development Team.
+ MessengerBot plugin for GLPI
+ Copyright (C) 2017 by the MessengerBot Development Team.
 
- https://github.com/pluginsGLPI/telegrambot
+ https://github.com/jurinva/messengerbot
  -------------------------------------------------------------------------
 
  LICENSE
 
- This file is part of TelegramBot.
+ This file is part of MessengerBot.
 
- TelegramBot is free software; you can redistribute it and/or modify
+ MessengerBot is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
 
- TelegramBot is distributed in the hope that it will be useful,
+ MessengerBot is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with TelegramBot. If not, see <http://www.gnu.org/licenses/>.
+ along with MessengerBot. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
 
-require GLPI_ROOT . '/plugins/telegrambot/vendor/autoload.php';
-use Longman\TelegramBot\Request;
+require GLPI_ROOT . '/plugins/messengerbot/vendor/autoload.php';
+use Longman\MessengerBot\Request;
 
-class PluginTelegrambotBot {
+class PluginMessengerbotBot {
 
    static public function getConfig($key) {
-      return Config::getConfigurationValues('plugin:telegrambot')[$key];
+      return Config::getConfigurationValues('plugin:messengerbot')[$key];
    }
 
    static public function setConfig($key, $value) {
-      Config::setConfigurationValues('plugin:telegrambot', [$key => $value]);
+      Config::setConfigurationValues('plugin:messengerbot', [$key => $value]);
    }
 
    static public function sendMessage($to, $content) {
       $chat_id = self::getChatID($to);
-      $telegram = self::getTelegramInstance();
+      $messenger = self::getMessengerInstance();
       $result = Request::sendMessage(['chat_id' => $chat_id, 'text' => $content]);
    }
 
@@ -49,10 +49,10 @@ class PluginTelegrambotBot {
       $response = 'ok';
 
       try {
-         $telegram = self::getTelegramInstance();
-         $telegram->enableMySql(self::getDBCredentials(), 'glpi_plugin_telegrambot_');
-         $telegram->handleGetUpdates();
-      } catch (Longman\TelegramBot\Exception\TelegramException $e) {
+         $messenger = self::getMessengerInstance();
+         $messenger->enableMySql(self::getDBCredentials(), 'glpi_plugin_messengerbot_');
+         $messenger->handleGetUpdates();
+      } catch (Longman\MessengerBot\Exception\MessengerException $e) {
          $response = $e->getMessage();
       }
 
@@ -65,16 +65,16 @@ class PluginTelegrambotBot {
       $chat_id = null;
 
       $result = $DB->request([
-         'FROM' => 'glpi_plugin_telegrambot_users',
+         'FROM' => 'glpi_plugin_messengerbot_users',
          'INNER JOIN' => [
-            'glpi_plugin_telegrambot_user' => [
+            'glpi_plugin_messengerbot_user' => [
                'FKEY' => [
-                  'glpi_plugin_telegrambot_users' => 'username',
-                  'glpi_plugin_telegrambot_user' => 'username'
+                  'glpi_plugin_messengerbot_users' => 'username',
+                  'glpi_plugin_messengerbot_user' => 'username'
                ]
             ]
          ],
-         'WHERE' => ['glpi_plugin_telegrambot_users.id' => $user_id]
+         'WHERE' => ['glpi_plugin_messengerbot_users.id' => $user_id]
       ]);
 
       if ($row = $result->next()) {
@@ -84,11 +84,11 @@ class PluginTelegrambotBot {
       return $chat_id;
    }
 
-   static private function getTelegramInstance() {
+   static private function getMessengerInstance() {
       $bot_api_key  = self::getConfig('token');
       $bot_username = self::getConfig('bot_username');
 
-      return new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
+      return new Longman\MessengerBot\Messenger($bot_api_key, $bot_username);
    }
 
    static private function getDBCredentials() {
